@@ -1,10 +1,16 @@
 # todo-cli
-## Usage
+## Settings
 
 ```
 npm install
+```
+
+## Usage
+
+```
 npm start
 ```
 
-:eyes:
-http://localhost:9000/
+### :eyes:
+* Client(React Apps): [http://localhost:9000/](http://localhost:9000/)
+* Server side(Rails API): [http://localhost:3000/](http://localhost:3000/)
