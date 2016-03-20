@@ -2,10 +2,10 @@
   "name": "todo-cli",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "watch": "watchify index.js -t babelify -o ./bundle.js",
-    "browser": "browser-sync start --server --port 9000 --files ['index.html', 'index.js']",
+    "watch": "watchify app.js -t babelify -o ./bundle.js",
+    "browser": "browser-sync start --server --port 9000 --files ['index.html', 'app.js']",
     "start": "npm run watch & npm run browser"
   },
   "repository": {
