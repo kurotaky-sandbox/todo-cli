@@ -1,3 +1,3 @@
-var foo = () => {
+var baz = () => {
   console.log("ok");
 };
