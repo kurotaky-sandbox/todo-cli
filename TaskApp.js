@@ -1,11 +1,15 @@
 import React from "react";
 
-class TaskApp extends React.Component {
+export default class TaskApp extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
-      <div className="TestTaskAApp">
-        test
+      <div className="TestTaskApp">
+        ずんずんずんずん
       </div>
-    )
+    );
   }
 }
