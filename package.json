@@ -25,12 +25,12 @@
     "babelify": "^7.2.0",
     "browser-sync": "^2.11.1",
     "gulp": "^3.9.1",
-    "jquery": "^2.2.2",
     "watchify": "^3.7.0"
   },
   "dependencies": {
     "bootstrap": "^3.3.6",
     "react": "^0.14.7",
-    "react-dom": "^0.14.7"
+    "react-dom": "^0.14.7",
+    "superagent": "^1.8.3"
   }
 }

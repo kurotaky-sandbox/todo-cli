@@ -1,7 +1,7 @@
 import React from "react";
 import TaskForm from "./TaskForm";
 import TaskList from "./TaskList";
-import $ from 'jquery'
+import request from 'superagent'
 
 export default class TaskApp extends React.Component {
   constructor(props) {
@@ -14,65 +14,56 @@ export default class TaskApp extends React.Component {
   }
 
   loadTaskFromServer() {
-    $.ajax({
-      url: this.props.url,
-      dataType: 'json',
-      success: function(result) {
-        this.setState({data: result});
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
+    request
+      .get(this.props.url)
+      .end((err, res) => {
+        if (err || !res.ok) {
+          console.error(this.props.url, status, err.toString());
+        } else {
+          this.setState({data: res.body});
+        }
+      });
   }
 
   handleTaskSubmit(task) {
     var tasks = this.state.data;
     var newTasks = tasks.concat([task]);
     this.setState({data: newTasks});
-    $.ajax({
-      url: this.props.url,
-      dataType: 'json',
-      type: 'POST',
-      data: task,
-      success: function(data) {
-        this.setState({data: data});
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
+    request
+      .post(this.props.url)
+      .send(task)
+      .end((err, res) => {
+        if (err || !res.ok) {
+          console.error(this.props.url, status, err.toString());
+        } else {
+          this.setState({data: res.body});
+        }
+      });
   }
 
   taskDestroy(id) {
-    $.ajax({
-      url: this.props.url + '/' + id,
-      dataType: 'json',
-      type: 'DELETE',
-      data: id,
-      success: function(data) {
-        this.setState({data: data});
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
+    request
+      .del(this.props.url + '/' + id)
+      .end((err, res) => {
+        if (err || !res.ok) {
+          console.error(this.props.url, status, err.toString());
+        } else {
+          this.setState({data: res.body});
+        }
+      });
   }
 
   taskUpdate(task) {
-    console.log(task);
-    $.ajax({
-      url: this.props.url + '/' + task.task.id,
-      dataType: 'json',
-      type: 'PATCH',
-      data: task,
-      success: function(data) {
-        this.setState({data: data});
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
+    request
+      .patch(this.props.url + '/' + task.task.id)
+      .send(task)
+      .end((err, res) => {
+        if (err || !res.ok) {
+          console.error(this.props.url, status, err.toString());
+        } else {
+          this.setState({data: res.body});
+        }
+      });
   }
 
   componentDidMount() {
