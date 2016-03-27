@@ -16,10 +16,12 @@ export default class TaskForm extends React.Component {
   render() {
     return (
       <form className="todoForm" onSubmit={this.handleSubmit.bind(this)}>
-        <div className="form-group">
+        <div className="input-group">
           <input type="text" className="form-control" placeholder="ToDo" ref="content" />
+          <span className="input-group-btn">
+            <input type="submit" className="btn btn-primary" value="登録" />
+          </span>
         </div>
-        <input type="submit" className="btn btn-primary" value="登録" />
       </form>
     );
   }
