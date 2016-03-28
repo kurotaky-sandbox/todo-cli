@@ -31,12 +31,12 @@ export default class TaskApp extends React.Component {
     this.setState({data: newTasks});
     request
       .post(this.props.url)
-      .send(task)
+      .send({task: task})
       .end((err, res) => {
         if (err || !res.ok) {
           console.error(this.props.url, status, err.toString());
         } else {
-          this.setState({data: res.body});
+          this.setState({data: newTasks});
         }
       });
   }

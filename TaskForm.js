@@ -8,7 +8,7 @@ export default class TaskForm extends React.Component {
     if (!content) {
       return;
     }
-    this.props.onTaskSubmit({task: {content: content, status: 'todo'}});
+    this.props.onTaskSubmit({content: content, status: 'todo'});
     ReactDOM.findDOMNode(this.refs.content).value = '';
     return;
   }
